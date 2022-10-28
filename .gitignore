@@ -24,3 +24,5 @@ hs_err_pid*
 replay_pid*
 /introJDBC/nbproject/private/
 /intro.JDBC/target/
+/TestMaven/target/
+/mcm/nbproject/private/

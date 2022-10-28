@@ -25,37 +25,17 @@ import java.util.logging.Logger;
  */
 public class TestMsql {
     public static void main(String[] args) {
-//        //defino la url de conexcion  a nuestra base de datos y sus paramtros
-//            String url = "jbc:msql://localhost:3306/test?useSSL=false"+
-//                    "&useTimezone=true&serverTimezone=UTC"+
-//                    "&allowPublickeyRetrival=true";
-//        try {
-//            //ahora tratamos de establecer la conexion con nuestra bbdd
-//            //esta sentencia puede crear una excepcion 
-//            Connection conexion = DriverManager.getConnection(url,"root","1234");
-//            //creo un Statement para poder ejecutar mis consultas msql
-//            Statement instruccion = conexion.createStatement();
-//            //defino mi consulta msql
-//            String sql = "SELECT * FROM persona";
-//            
-//            ResultSet resultado = instruccion.executeQuery(sql);
-//            
-//            while (resultado.next()){
-//                System.out.println("idPersona:"+resultado.getInt("idPersona"));
-//                System.out.println("nombre:"+resultado.getString("nombre"));
-//                System.out.println("apellido:"+resultado.getString("apellido"));
-//                System.out.println("email:"+resultado.getString("email"));
-//                System.out.println("telefono:"+resultado.getString("telefono"));
-//            
-//            }
-//            resultado.close();
-//            instruccion.close();
-//            conexion.close();
-//        } catch (SQLException ex) {
-//            //Logger.getLogger(TestMsql.class.getName()).log(Level.SEVERE, null, ex);
-//            ex.printStackTrace(System.out);
-//        }
+
+    //INSTANCIO UNA PERSONA DAO
     PersonaDao personaDao=new PersonaDao();
+    Persona p2 = new Persona("Emily","Ayala","ingrid@gmail.com","610375477");
+    Persona p3 = new Persona(1,"Emily","Ayala","Emily@gmail.com","610375477");
+    //instanciar un objeto 
+    //personaDao.insertar(p2);
+    //ACTUALIZAR
+    //personaDao.actualizar(p3);
+    personaDao.delete(p3);
+    
         try {
             List<Persona>personas= personaDao.seleccionar();
             personas.forEach(persona ->{
@@ -65,4 +45,7 @@ public class TestMsql {
             ex.printStackTrace(System.out);
         }
    }
+    
+  
+    
 }

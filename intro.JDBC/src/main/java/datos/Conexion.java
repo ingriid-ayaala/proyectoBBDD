@@ -15,17 +15,19 @@ import java.sql.Statement;
  * @author ingri
  */
 public class Conexion {
+    //TODA ESTA CONEXION DESAPARECERA YA QUE HAY OTROS SOFTWARE QUE SE ENCARGAN DE LAS CONEXIONES CONCAT 
     
     //tres constantes url,usuario y contraseña, para no mezclar funcionalidades 
-    private static final String JDBC_URL ="jbc:msql://localhost:3306/test?useSSL=false"+
+    private static final String JDBC_URL ="jdbc:mysql://localhost:3306/test?useSSL=false"+
                     "&useTimezone=true&serverTimezone=UTC"+
-                    "&allowPublickeyRetrival=true";
+                    "&allowPublicKeyRetrival=true";
     private static final String JDBC_USER ="root";
-    private static final String JDBC_PASWORD ="1234";
-    
-    public static Connection getConecciton() throws SQLException {
-        return DriverManager.getConnection(JDBC_URL,JDBC_USER,JDBC_PASWORD);
+    private static final String JDBC_PASSWORD ="1234";
+    //metodo para establecer la conexion 
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(JDBC_URL,JDBC_USER,JDBC_PASSWORD);
     }
+    //conjunto de metodos de cierre 
     public static void close(ResultSet rs) throws SQLException {
         rs.close();
                 
